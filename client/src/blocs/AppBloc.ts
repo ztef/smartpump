@@ -5,7 +5,8 @@ import { appInitialState, AppState } from "./AppState";
 
 class AppBloc extends Bloc<AppState> {
 
-     
+    repository : any; 
+    token: any;
 
     constructor(){
         super(appInitialState);
@@ -13,8 +14,19 @@ class AppBloc extends Bloc<AppState> {
 
     //
     setAuthenticated = (auth_data: { token: any; user_data:any }) =>{
+        this.token = auth_data.token;
+        this.repository = auth_data.user_data;
         this.changeState({kind:"AuthenticatedAppState", token:auth_data.token, user_data:auth_data.user_data, authenticated: true });
     };
+
+    setMainState = () =>{
+        this.changeState({kind:"MainState", authenticated:true});
+    };
+
+    setEditingState = () =>{
+        this.changeState({kind:"EditingState", authenticated:true});
+    };
+
 
     setAuthenticatedError = (error: any) =>{
         this.changeState({kind:"AuthenticatedErrorState", error:error,  authenticated: false });
@@ -25,7 +37,8 @@ class AppBloc extends Bloc<AppState> {
         this.changeState({kind:"UnAuthenticatedAppState", authenticated: false });
     };
 
-    setUpdated = () => {
+    setUpdated = (updated_data:any) => {
+        this.repository = updated_data.user_data;
         this.changeState({kind:"Updated", authenticated: true });
     };
 
@@ -75,7 +88,7 @@ class AppBloc extends Bloc<AppState> {
             const res = await axios.post(api_url,user_data);
             var response = res;
             
-            this.setUpdated();
+            this.setUpdated(response.data);
 
         } catch(err) {
             var e = err;

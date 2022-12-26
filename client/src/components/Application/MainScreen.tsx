@@ -1,5 +1,5 @@
 import React from 'react';
-import {EditTemplate} from './AppTemplates.js';
+import {MainScreenTemplate} from './AppTemplates.js';
 import '../../STYLES/styles.scss';
 import {useAppBloc} from "../../App";
 import BlocBuilder from '../../BLOC/BlocBuilder';
@@ -12,16 +12,14 @@ const handleSubmit = (event: { preventDefault: () => void; }) => {
 };
 
 
-const Wellcome = () => {
+const MainScreen = () => {
   
   const bloc = useAppBloc();
 
+  const user_data = bloc.repository;
 
-  function update(credentials: any) {
-    
-    var c = credentials;
-    bloc.sendUpdatedUserData(credentials);
-     
+  function gotoEdit(credentials: any) {
+    bloc.setEditingState();
   }
 
   function logout() {
@@ -37,7 +35,7 @@ const Wellcome = () => {
     <BlocBuilder
           bloc={bloc}
           builder={(state:any) => 
-            <EditTemplate user_data = {state.user_data} onClick={update} onClickLogout={logout}/>            
+            <MainScreenTemplate user_data = {user_data} onClick={gotoEdit} onClickLogout={logout}/>            
           }                                
      />                      
     </form>  
@@ -45,4 +43,4 @@ const Wellcome = () => {
   );
 };
 
-export default Wellcome;
+export default MainScreen;

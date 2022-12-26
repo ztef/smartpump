@@ -15,17 +15,17 @@ const Updated = () => {
   const bloc = useAppBloc();
 
 
-  function Retry() {
+  function gotoMain() {
     
     
-    bloc.setUnAuthenticated();
+    bloc.setMainState();
 
   }
 
   return (
     <div className="form">
     <form>
-      <UpdatedTemplate onClick={Retry}/>
+      <UpdatedTemplate onClick={gotoMain}/>
     </form>
   </div>
   );

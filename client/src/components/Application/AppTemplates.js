@@ -1,11 +1,12 @@
 import React from 'react';
+import logo from '../../assets/logo.png';
 
 class FluidInput extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
         focused: false,
-        value: this.props.value
+        value: this.props.defaultValue
       };
     }
     focusField() {
@@ -83,7 +84,7 @@ class FluidInput extends React.Component {
           <div className="title">
             Your Record Has been Updated Succesfully
           </div>
-           <Button buttonText="Edit" buttonClass="login-button" onClick={this.handleNext}/>
+           <Button buttonText="Back to Main" buttonClass="login-button" onClick={this.handleNext}/>
         </div>
       );
     }
@@ -108,7 +109,7 @@ class FluidInput extends React.Component {
             ERROR : Cannot Update your Info at this time
           </div>
           
-            <Button buttonText="Back" buttonClass="login-button" onClick={this.handleNext}/>
+          <Button buttonText="Back" buttonClass="login-button" onClick={this.handleNext}/>
            
         </div>
 
@@ -138,7 +139,22 @@ class FluidInput extends React.Component {
 
     handleSubmit = e => {
         var credentials = this.state;
-        credentials.name = {first:credentials.first, last:credentials.last};
+
+        var first;
+        var last;
+        if(credentials.first){
+           first = credentials.first;
+        } else {
+           first = credentials.name.first;
+        }
+        if(credentials.last){
+          last = credentials.last;
+       } else {
+          last = credentials.name.last;
+       }
+
+
+        credentials.name = {first:first, last:last};
         delete credentials.first;
         delete credentials.last;
 
@@ -160,17 +176,18 @@ class FluidInput extends React.Component {
       return (
 
         <div className="wellcome-container">
-          <div className="title">
-          Wellcome {this.props.user_data.name.first} {this.props.user_data.name.last}   
+          <img src={logo} width="60" height="50"></img>
           <br/>
-          Your Balance is :  {this.props.user_data.balance}    
-          </div>
+            Update your Information :
+          <br/>
+          <br/>  
           <br/>
           <FluidInput defaultValue = {this.props.user_data.name.first} name = "first" type="text" label="First Name" id="first" style={style} onChange={this.handleChange}/>
           <FluidInput defaultValue = {this.props.user_data.name.last} name = "last" type="text" label="Last Name" id="last" style={style} onChange={this.handleChange}/>
           <FluidInput defaultValue = {this.props.user_data.company} name = "company" type="text" label="Company" id="company" style={style} onChange={this.handleChange}/>
           <FluidInput defaultValue = {this.props.user_data.phone} name = "company" type="text" label="Phone" id="phone" style={style} onChange={this.handleChange}/>
-       
+          <FluidInput defaultValue = {this.props.user_data.address} name = "address" type="text" label="Adress" id="address" style={style} onChange={this.handleChange}/>
+        
           <Button buttonText="Update Your Data" buttonClass="login-button" onClick={this.handleSubmit}/>
           <Button buttonText="Logout" buttonClass="logout-button" onClick={this.handleLogout}/>
         </div>
@@ -178,8 +195,75 @@ class FluidInput extends React.Component {
     }
   }
 
-  
+  class MainScreenTemplate extends React.Component {
+
+    state = this.props.user_data;
+     
+    handleLogout = e => {
+      this.props.onClickLogout();
+    }
+
+    handleSubmit = e => {
+      this.props.onClick();
+    }
+
+    render() {
+      
+      const style = {
+        margin: "10px 0"
+      };
+
+      return (
+
+        <div className="wellcome-container">
+           <img src={logo} width="60" height="50"></img>
+          <div className="title">
+          Wellcome {this.props.user_data.name.first} 
+             
+          <br/>
+          Your Balance is :  {this.props.user_data.balance}    
+          </div>
+          <br/>
+
+          <table class="styled-table">
+    
+          <tbody>
+              <tr>
+                  <td>Full Name :  </td>
+                  <td>{this.props.user_data.name.first} {this.props.user_data.name.last}</td>
+              </tr>
+              <tr>
+                  <td>Company</td>
+                  <td>{this.props.user_data.company}</td>
+              </tr>
+              <tr>
+                  <td>email</td>
+                  <td>{this.props.user_data.email}</td>
+              </tr>
+              <tr>
+                  <td>Phone</td>
+                  <td>{this.props.user_data.phone}</td>
+              </tr>
+              <tr>
+                  <td>Address</td>
+                  <td>{this.props.user_data.address}</td>
+              </tr>
 
 
-  export {Button, FluidInput, EditTemplate  , UpdatedTemplate, UpdateErrorTemplate };
+
+
+            
+          </tbody>
+</table>
+
+          <br/>  
+          <Button buttonText="Edit your data" buttonClass="login-button" onClick={this.handleSubmit}/>
+          <Button buttonText="Logout" buttonClass="logout-button" onClick={this.handleLogout}/>
+        </div>
+      );
+    }
+  }
+
+
+  export {Button, FluidInput, MainScreenTemplate , EditTemplate  , UpdatedTemplate, UpdateErrorTemplate };
   

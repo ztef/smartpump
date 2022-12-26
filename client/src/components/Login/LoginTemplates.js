@@ -1,6 +1,9 @@
 import React from 'react';
+import logo from '../../assets/logo.png';
 
 class FluidInput extends React.Component {
+    
+    
     constructor(props) {
       super(props);
       this.state = {
@@ -34,6 +37,8 @@ class FluidInput extends React.Component {
       
       return (
         <div className={inputClass} style={style}>
+          <image src={logo}></image>
+          
           <div className="fluid-input-holder">
             
             <input 
@@ -118,8 +123,8 @@ class FluidInput extends React.Component {
      
 
       return (
-
         <div className="login-container">
+          <img src={logo} width="60" height="50"></img>
           <div className="title">
            Login
           </div>
@@ -127,6 +132,7 @@ class FluidInput extends React.Component {
           <FluidInput name= "password" type="password" label="password" id="password" style={style} onChange={this.handleChange}/>
           <Button buttonText="log in" buttonClass="login-button" onClick={this.handleSubmit}/>
         </div>
+        
       );
     }
   }

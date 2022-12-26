@@ -4,8 +4,9 @@ import {useAppBloc} from "./App";
 import React from 'react';
 import Login from './components/Login/Login';
 import LoginError from './components/Login/LoginError';
-import Wellcome from './components/Application/Wellcome';
+import Edit from './components/Application/EditForm';
 import Updated from './components/Application/Updated';
+import MainScreen from './components/Application/MainScreen';
 import UpdateError from './components/Application/UpdateError';
 
 
@@ -26,9 +27,13 @@ const BLoCApp: React.FC = () => {
     if(s == "AuthenticatedErrorState")
       return <LoginError/>;
     if(s == "AuthenticatedAppState")
-      return <Wellcome/>; 
+      return <MainScreen/>; 
     if(s == "Updated")
-      return <Updated/>; 
+      return <Updated/>;
+    if(s == "MainState")
+      return <MainScreen/>;  
+    if(s == "EditingState")
+      return <Edit/>;    
     if(s == "Updating")
       return <button>SENDING ...</button> 
     if(s == "UpdateError")

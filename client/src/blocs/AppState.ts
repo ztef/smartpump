@@ -1,5 +1,6 @@
 export interface CommonAppState {
     authenticated: boolean;
+   
 }
 
 export interface LoadingAppState {
@@ -10,6 +11,7 @@ export interface AuthenticatedAppState {
     kind: "AuthenticatedAppState";
     token: string;
     user_data: any;
+    
 }
 
 export interface Updating {
@@ -21,6 +23,17 @@ export interface Updated {
     kind: "Updated";
    
 }
+
+export interface MainState {
+    kind: "MainState";
+   
+}
+
+export interface EditingState {
+    kind: "EditingState";
+   
+}
+
 
 export interface UpdateError {
     kind: "UpdateError";
@@ -46,10 +59,13 @@ export interface ErrorAppState {
     error: string;
 }
 
-export type AppState = (LoadingAppState | AuthenticatedAppState| UnAuthenticatedAppState | Authenticating | Updating | AuthenticatedErrorState | Updated | UpdateError | ErrorAppState) & CommonAppState
+export type AppState = (LoadingAppState | AuthenticatedAppState| UnAuthenticatedAppState | MainState | Authenticating |EditingState | Updating | AuthenticatedErrorState | Updated | UpdateError | ErrorAppState) & CommonAppState
 
 
 export const appInitialState: AppState = {
     kind: "UnAuthenticatedAppState",
     authenticated: false
 }
+/*
+
+*/
