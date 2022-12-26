@@ -4,10 +4,15 @@ import {useAppBloc} from "./App";
 import React from 'react';
 import Login from './components/Login/Login';
 import LoginError from './components/Login/LoginError';
+import Wellcome from './components/Application/Wellcome';
+import Updated from './components/Application/Updated';
+import UpdateError from './components/Application/UpdateError';
+
+
 import BlocBuilder from './BLOC/BlocBuilder';
 import { AppState } from './blocs/AppState';
 import { JsxElement } from 'typescript';
-import Wellcome from './components/Application/Wellcome';
+
 
 const BLoCApp: React.FC = () => {
   
@@ -22,7 +27,13 @@ const BLoCApp: React.FC = () => {
       return <LoginError/>;
     if(s == "AuthenticatedAppState")
       return <Wellcome/>; 
-    return <button>YA ENTRASTE COMPADRE</button>  
+    if(s == "Updated")
+      return <Updated/>; 
+    if(s == "Updating")
+      return <button>SENDING ...</button> 
+    if(s == "UpdateError")
+      return <UpdateError/>
+    return <button>UNKOWN STATE</button>  
      
   };
 

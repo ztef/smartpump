@@ -24,13 +24,20 @@ const Wellcome = () => {
      
   }
 
+  function logout() {
+    
+    bloc.setUnAuthenticated();
+     
+  }
+
+
   return (
     <div className="form">
     <form>
     <BlocBuilder
           bloc={bloc}
           builder={(state:any) => 
-            <EditTemplate user_data = {state.user_data} onClick={update}/>            
+            <EditTemplate user_data = {state.user_data} onClick={update} onClickLogout={logout}/>            
           }                                
      />                      
     </form>  

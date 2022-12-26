@@ -83,11 +83,6 @@ class FluidInput extends React.Component {
           <div className="title">
             Your Record Has been Updated Succesfully
           </div>
-          <div>
-
-            <FluidInput value = {this.props.user_data.name.first} name = "name" type="text" label="name" id="name" style={style} onChange={this.handleChange}/>
-        
-          </div>
            <Button buttonText="Edit" buttonClass="login-button" onClick={this.handleNext}/>
         </div>
       );
@@ -112,13 +107,15 @@ class FluidInput extends React.Component {
           <div className="title">
             ERROR : Cannot Update your Info at this time
           </div>
-          <div>
-
-            <FluidInput value = {this.props.user_data.name.first} name = "name" type="text" label="name" id="name" style={style} onChange={this.handleChange}/>
-        
-          </div>
-           <Button buttonText="Edit" buttonClass="login-button" onClick={this.handleNext}/>
+          
+            <Button buttonText="Back" buttonClass="login-button" onClick={this.handleNext}/>
+           
         </div>
+
+
+
+
+
       );
     }
   }
@@ -148,6 +145,12 @@ class FluidInput extends React.Component {
         this.props.onClick(credentials);
     }
 
+    handleLogout = e => {
+      this.props.onClickLogout();
+  }
+
+
+
     render() {
       
       const style = {
@@ -169,7 +172,7 @@ class FluidInput extends React.Component {
           <FluidInput defaultValue = {this.props.user_data.phone} name = "company" type="text" label="Phone" id="phone" style={style} onChange={this.handleChange}/>
        
           <Button buttonText="Update Your Data" buttonClass="login-button" onClick={this.handleSubmit}/>
-          <Button buttonText="Logout" buttonClass="logout-button" onClick={this.handleSubmit}/>
+          <Button buttonText="Logout" buttonClass="logout-button" onClick={this.handleLogout}/>
         </div>
       );
     }

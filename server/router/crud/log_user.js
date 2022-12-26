@@ -21,19 +21,7 @@ export default async (req, res, next) => {
         .value();
   
     if (user) {
-      let payload = {
-        _id: user._id,
-        guid: user.guid,
-        isActive: user.isActive,
-        balance: user.balance,
-        age: user.age,
-        eyeColor: user.eyeColor,
-        name: user.name,
-        company: user.company,
-        email: user.email,
-        phone: user.phone,
-        address: user.address,
-      };
+      let payload = user;
       // Sign Token
       jwt.sign(
         payload,
@@ -54,8 +42,6 @@ export default async (req, res, next) => {
       );
 
 
-
-      //return res.status(200).json({user: user});
 
     } else {
       errors.password = "Invalid login information";

@@ -68,11 +68,11 @@ class AppBloc extends Bloc<AppState> {
         }
     }
 
-    async sendUpdate(credentials: any) {
+    async sendUpdate(user_data: any) {
    
         let api_url = `http://localhost:5000/api/update_user`;
         try {
-            const res = await axios.post(api_url,credentials);
+            const res = await axios.post(api_url,user_data);
             var response = res;
             
             this.setUpdated();

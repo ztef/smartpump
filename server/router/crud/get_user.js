@@ -16,7 +16,7 @@ export default async (req, res, next) => {
       return res.status(200).json({users: user});
     } catch (err) {
       let errors = {};
-      errors.get_users = "Failed to get users";
+      errors.get_users = "Failed to get user";
       errors.endpoint = "get_users";
       return res.status(500).json(errors);
     }
