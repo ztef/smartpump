@@ -1,3 +1,10 @@
+/*
+    Smartpump Application Server
+
+    Encapsulates access to lowDB
+    
+*/
+
 import { LowSync } from 'lowdb';
 import { JSONFileSync } from 'lowdb/node';
 import { dirname, join } from 'path';
@@ -24,7 +31,7 @@ class dbms {
     }
 
     say(){
-        return 'mensaje de la base de datos';
+        return 'for testing';
     }
 
     test(){
@@ -36,8 +43,8 @@ class dbms {
             this.db.data.users.push({
             key: '1',
             status: true,
-            username: 'dummyuser',
-            password: 'dummypw',
+            username: 'testuser',
+            password: 'testpass',
             });
         }
   

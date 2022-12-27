@@ -1,3 +1,10 @@
+/*
+    Smartpump Application Server
+
+    Module : update_user , 
+             Updates asingle user record.
+*/
+
 import lodash from 'lodash';
 
 export default async (req, res, next) => {

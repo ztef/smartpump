@@ -1,3 +1,23 @@
+/*
+
+  Smartpump Application Server
+
+  Coded by Esteban Ortiz for the Challenge.
+
+      Using :
+      
+            LowDB database manager
+            express for routing
+            JWT for Json Web Tokens
+
+    Basically this simple server exposes an API for :
+            get_users (For testing)
+            get_user (get a sinle user from the DB)
+            log_user for Authentication (return a token)  
+            update_user to update a single user record
+
+*/
+
 import express from 'express';
 import {dbms} from './dbms/dbhandler.js';
 import setrouter from './router/setrouter.js';
@@ -16,8 +36,6 @@ app.set('database', database);
 
 
 setrouter(app);
-
-
 
 
 // start server

@@ -15,6 +15,14 @@ import { AppState } from './blocs/AppState';
 import { JsxElement } from 'typescript';
 
 
+/*
+    This Code is the main BLOC Builder 
+
+    Here (based on the App State) are controlled all
+    the screens of the entier App.
+
+*/
+
 const BLoCApp: React.FC = () => {
   
   const bloc = useAppBloc();

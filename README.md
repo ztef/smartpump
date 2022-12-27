@@ -1,6 +1,0 @@
-# smartpump
-
-DESCRIPTION 
-
-client :
-

@@ -1,3 +1,9 @@
+/*
+    This Interfaces describes all the States
+    for the entier Apllication.
+
+*/
+
 export interface CommonAppState {
     authenticated: boolean;
    

@@ -1,3 +1,14 @@
+/*
+
+    Smartpump Application Server
+
+    Module : log_user , 
+              Receive an emal/passw and returns a 
+              jwtoken and user_data.
+
+*/
+
+
 import lodash from 'lodash';
 import jwt from "jsonwebtoken";
 
