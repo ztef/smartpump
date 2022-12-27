@@ -28,7 +28,14 @@ const database = new dbms('lowdb');
 
 
 const app = express();
-app.use(cors());    
+//app.use(cors());    
+app.use(cors({
+  credentials: true,
+  preflightContinue: true,
+  methods: ['GET', 'POST', 'PUT', 'PATCH' , 'DELETE', 'OPTIONS'],
+  origin: true
+}));
+
 app.use(bodyParser.urlencoded({ limit: "500mb", extended: true }));
 app.use(bodyParser.json({ limit: "500mb", extended: true }));
 

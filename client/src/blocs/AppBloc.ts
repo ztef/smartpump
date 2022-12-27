@@ -74,7 +74,7 @@ class AppBloc extends Bloc<AppState> {
 
    async getCredentials(credentials: any) {
    
-        let api_url = `http://localhost:5000/api/log_user?email=${credentials.username}&password=${credentials.password}`;
+        let api_url = `http://ztef-orange-telegram-p7jjgwrq4gc9774-5000.preview.app.github.dev/api/log_user?email=${credentials.username}&password=${credentials.password}`;
         try {
             const res = await axios.get(api_url);
             var response = res;
@@ -92,9 +92,9 @@ class AppBloc extends Bloc<AppState> {
 
     async sendUpdate(user_data: any) {
    
-        let api_url = `http://localhost:5000/api/update_user`;
+        let api_url = `http://ztef-orange-telegram-p7jjgwrq4gc9774-5000.preview.app.github.dev/api/update_user/`;
         try {
-            const res = await axios.post(api_url,user_data, {timeout: 5000});
+            const res = await axios.post(api_url,user_data, {withCredentials:false, timeout: 5000});
             var response = res;
             
             this.setUpdated(response.data);
