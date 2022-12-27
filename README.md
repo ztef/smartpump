@@ -57,3 +57,20 @@ Intructions :
     Run Client & Server Simultaneously :
 
     	npm run start
+
+
+
+    TESTING
+
+	For running test scripts :
+
+		npm test
+
+
+	
+
+
+
+
+
+
