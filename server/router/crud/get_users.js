@@ -1,3 +1,10 @@
+/*
+    Smartpump Application Server
+
+    Module : get_users , 
+             returns all (limit) records.
+             This is just for testing or extensions in the future.
+*/
 
 export default async (req, res, next) => {
  

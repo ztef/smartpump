@@ -3,6 +3,15 @@ import Bloc from "../BLOC/Bloc";
 import { appInitialState, AppState } from "./AppState";
 
 
+/*
+    This Class defines all the BLOC (Business Logic)
+    of the APP and not depends on the GUI Design.
+
+    Business Logic includes calls to the server for
+    the API Services.
+
+*/
+
 class AppBloc extends Bloc<AppState> {
 
     repository : any; 

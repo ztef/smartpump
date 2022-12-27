@@ -1,3 +1,12 @@
+/*
+
+    Smartpump Application Server
+
+    Module : get_user , 
+             returns a single user record.
+*/
+
+
 
 export default async (req, res, next) => {
   
