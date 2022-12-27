@@ -94,7 +94,7 @@ class AppBloc extends Bloc<AppState> {
    
         let api_url = `http://localhost:5000/api/update_user`;
         try {
-            const res = await axios.post(api_url,user_data);
+            const res = await axios.post(api_url,user_data, {timeout: 5000});
             var response = res;
             
             this.setUpdated(response.data);
